@@ -16,5 +16,10 @@ object Box {
 
   /** Defines wider to be a comparison on the box height */
   def taller(x: Box, y: Box): Box = greaterBy(x, y, p => p.height)
+  
+  /**Defines wider and taller using the underscore notation */
+  val wider: (Box, Box) => Box = greaterBy(_, _, p => p.width)
+  
+  val taller: (Box, Box) => Box = greaterBy(_, _, p => p.height)
 
 }
