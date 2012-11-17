@@ -10,5 +10,12 @@ object MyModule {
   }
 
   /** Program entry point */
-  def main(args: Array[String]): Unit = println(formatAbs(-42))
+  def main(args: Array[String]): Unit = {
+    println(formatAbs(-42))
+
+    /** Using the lessThan function from FunctionLiterals */
+    import chapter.two.FunctionLiterals._
+    val b = lessThan(10, 20)
+    println(b)
+  }
 }
