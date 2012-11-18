@@ -21,5 +21,13 @@ object Box {
   val wider: (Box, Box) => Box = greaterBy(_, _, p => p.width)
   
   val taller: (Box, Box) => Box = greaterBy(_, _, p => p.height)
-
+  
+  /** Defines a function that negates another function */
+  def not(p: Int => Boolean): Int => Boolean = n => !(p(n))
+  def even(n: Int): Boolean = n % 2 == 0
+  def negative(n: Int): Boolean = n < 0
+  
+  /** Defining odd and positive using the not function */
+  val odd = not(even)
+  val positive = not(negative)
 }
