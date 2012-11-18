@@ -9,9 +9,10 @@ object FunctionLiterals {
    * Using the underscore notation to define functions
    */
   val lessThan: (Int, Int) => Boolean = _ < _
-
-  /** Defines a function that negates another function */
-  def not(p: Int => Boolean): Int => Boolean = n => !(p(n))
+  
+  /** Defines a polymorphic function that negates another function */
+  // def not(p: Int => Boolean): Int => Boolean = n => !(p(n))
+  def not[A](p: A => Boolean): A => Boolean = n => !(p(n))
   def even(n: Int): Boolean = n % 2 == 0
   def negative(n: Int): Boolean = n < 0
 
@@ -24,6 +25,12 @@ object FunctionLiterals {
    * Using higher-order function to define absolute
    */
   def abs(n: Int): Int = if(n < 0) -n else n
-  def absolute(f: Int => Int): Int => Int = n => abs(f(n))
+  // def absolute(f: Int => Int): Int => Int = n => abs(f(n))
+  
+  /**
+   * EXERCISE 3
+   * Making absolute polymorphic
+   */
+  def absolute[A](f: A => Int): A => Int = n => abs(f(n)) 
 
 }

@@ -19,8 +19,11 @@ object MyModule {
     import chapter.two.FunctionLiterals._
     val b = lessThan(10, 20)
     assert(lessThan(10, 20) == true)
-    
-    /** Using absolute to get absolute value of a function */
+
+    /**
+     * EXCERCISE 2
+     * Using absolute to get absolute value of a function
+     */
     val twoTimes: Int => Int = n => n * 2
     assert(twoTimes(-3) == -6)
     val absTwoTimes = absolute(twoTimes)
