@@ -1,6 +1,8 @@
 package chapter.two
 
-import com.sun.tools.corba.se.idl.constExpr.LessThan
+import chapter.two.FunctionLiterals.absolute
+import chapter.two.FunctionLiterals.divisibleBy
+import chapter.two.FunctionLiterals.lessThan
 
 object MyModule {
 
@@ -28,5 +30,19 @@ object MyModule {
     assert(twoTimes(-3) == -6)
     val absTwoTimes = absolute(twoTimes)
     assert(absTwoTimes(-3) == 6)
+
+    /**
+     * EXERCISE 4
+     * Using divisbleBy to check whether a given number is divisible by
+     * k
+     */
+    val divisibleByTwo = divisibleBy(2)
+    assert(divisibleByTwo(8) == true)
+    assert(divisibleByTwo(412) == true)
+    assert(divisibleByTwo(13) == false)
+    
+    val divisibleByFive = divisibleBy(5)
+    assert(divisibleByFive(6) == false)
+    assert(divisibleByFive(15) == true)
   }
 }

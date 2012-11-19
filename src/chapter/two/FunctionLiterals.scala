@@ -31,6 +31,15 @@ object FunctionLiterals {
    * EXERCISE 3
    * Making absolute polymorphic
    */
-  def absolute[A](f: A => Int): A => Int = n => abs(f(n)) 
+  def absolute[A](f: A => Int): A => Int = n => abs(f(n))
+  
+  /**
+   * EXERCISE 4
+   * Writing a method divisibleBy that returns a predicate checking
+   * whether a given number is divisible by k
+   */
+  type Pred[A] = A => Boolean
+  
+  def divisibleBy(k: Int): Pred[Int] = n => n % k == 0 
 
 }
