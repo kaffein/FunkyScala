@@ -47,5 +47,12 @@ object FunctionLiterals {
    * Rewriting even so that it uses divisibleBy
    */
   def even(n: Int) = divisibleBy(2)(n)
+  
+  /**
+   * EXERCISE 6
+   * Writing a function to check divisibility using higher-order
+   * functions
+   */
+  def lift[A](f: (Boolean, Boolean) => Boolean, g: Pred[A], h: Pred[A]): Pred[A] = n => f(g(n), h(n))
 
 }

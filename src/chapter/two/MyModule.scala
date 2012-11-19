@@ -53,5 +53,23 @@ object MyModule {
     assert(even(5) == false)
     assert(even(11) == false)
     assert(even(10) == true)
+    
+    /**
+     * EXERCISE 6
+     * Using the polymorphic lift higher-order function to check whether
+     * a number is divisible by 3 OR 5, or by 3 AND 5
+     */
+    val divisibleByThree = divisibleBy(3)
+    val divisibleByThreeAndFive = lift((x, y) => x && y, divisibleByThree, divisibleByFive)
+    val divisibleByThreeOrFive = lift((x, y) => x || y, divisibleByThree, divisibleByFive)
+    
+    assert(divisibleByThreeAndFive(15) == true)
+    assert(divisibleByThreeAndFive(18) == false)
+    
+    assert(divisibleByThreeOrFive(3) == true)
+    assert(divisibleByThreeOrFive(5) == true)
+    assert(divisibleByThreeOrFive(18) == true)
+    assert(divisibleByThreeOrFive(25) == true)
+    assert(divisibleByThreeOrFive(7) == false)
   }
 }
