@@ -13,7 +13,7 @@ object FunctionLiterals {
   /** Defines a polymorphic function that negates another function */
   // def not(p: Int => Boolean): Int => Boolean = n => !(p(n))
   def not[A](p: A => Boolean): A => Boolean = n => !(p(n))
-  def even(n: Int): Boolean = n % 2 == 0
+  // def even(n: Int): Boolean = n % 2 == 0
   def negative(n: Int): Boolean = n < 0
 
   /** Defining odd and positive using the not function */
@@ -40,6 +40,12 @@ object FunctionLiterals {
    */
   type Pred[A] = A => Boolean
   
-  def divisibleBy(k: Int): Pred[Int] = n => n % k == 0 
+  def divisibleBy(k: Int): Pred[Int] = n => n % k == 0
+  
+  /**
+   * EXERCISE 5
+   * Rewriting even so that it uses divisibleBy
+   */
+  def even(n: Int) = divisibleBy(2)(n)
 
 }

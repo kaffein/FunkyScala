@@ -34,7 +34,7 @@ object MyModule {
     /**
      * EXERCISE 4
      * Using divisbleBy to check whether a given number is divisible by
-     * k
+     * another number k
      */
     val divisibleByTwo = divisibleBy(2)
     assert(divisibleByTwo(8) == true)
@@ -44,5 +44,14 @@ object MyModule {
     val divisibleByFive = divisibleBy(5)
     assert(divisibleByFive(6) == false)
     assert(divisibleByFive(15) == true)
+    
+    /**
+     * EXERCISE 5
+     * Using the divisibleBy-based even function to test divisibility by 2
+     */
+    assert(even(2) == true)
+    assert(even(5) == false)
+    assert(even(11) == false)
+    assert(even(10) == true)
   }
 }
