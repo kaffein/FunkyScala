@@ -60,8 +60,8 @@ object MyModule {
      * a number is divisible by 3 OR 5, or by 3 AND 5
      */
     val divisibleByThree = divisibleBy(3)
-    val divisibleByThreeAndFive = lift((x, y) => x && y, divisibleByThree, divisibleByFive)
-    val divisibleByThreeOrFive = lift((x, y) => x || y, divisibleByThree, divisibleByFive)
+    val divisibleByThreeAndFive = lift[Int,Boolean,Boolean,Boolean]((x, y) => x && y)(divisibleByThree, divisibleByFive)
+    val divisibleByThreeOrFive = lift[Int,Boolean,Boolean,Boolean]((x, y) => x || y)(divisibleByThree, divisibleByFive)
     
     assert(divisibleByThreeAndFive(15) == true)
     assert(divisibleByThreeAndFive(18) == false)

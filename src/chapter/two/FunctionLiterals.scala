@@ -53,7 +53,8 @@ object FunctionLiterals {
    * Writing a function to check divisibility using higher-order
    * functions
    */
-  def lift[A](f: (Boolean, Boolean) => Boolean, g: Pred[A], h: Pred[A]): Pred[A] = n => f(g(n), h(n))
+  // def lift[A](f: (Boolean, Boolean) => Boolean, g: Pred[A], h: Pred[A]): Pred[A] = n => f(g(n), h(n))
+  def lift[A,B,C,D](f: (B,C) => D)(g: A => B, h: A => C): A => D = n => f(g(n), h(n))
   
   /**
    * EXERCISE 7
