@@ -54,5 +54,12 @@ object FunctionLiterals {
    * functions
    */
   def lift[A](f: (Boolean, Boolean) => Boolean, g: Pred[A], h: Pred[A]): Pred[A] = n => f(g(n), h(n))
-
+  
+  /**
+   * EXERCISE 7
+   * Implementing an abstract higher-order function that performs currying and another
+   * that performs uncurrying
+   */
+  def curry[A,B,C](f:(A,B) => C): A => B => C = a => b => f(a,b) 
+  def uncurry[A,B,C](f: A => B => C): (A,B) => C = (a,b) => f(a)(b)
 }
