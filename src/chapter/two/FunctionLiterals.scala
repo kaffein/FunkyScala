@@ -62,4 +62,11 @@ object FunctionLiterals {
    */
   def curry[A,B,C](f:(A,B) => C): A => B => C = a => b => f(a,b) 
   def uncurry[A,B,C](f: A => B => C): (A,B) => C = (a,b) => f(a)(b)
+  
+  /**
+   * EXERCISE 8
+   * Implementing a higher-order function that composes two functions
+   * Equivalent to : f compose g OR g andThen f
+   */
+  def compose[A,B,C](f: B => C, g: A => B): A => C = a => f(g(a))
 }
