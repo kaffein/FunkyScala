@@ -57,6 +57,14 @@ object FunctionLiterals {
   def lift[A,B,C,D](f: (B,C) => D)(g: A => B, h: A => C): A => D = n => f(g(n), h(n))
   
   /**
+   * EXERCISE 10
+   * Writing a lift function that takes three arguments 
+   */
+  def lift3[A,B,C,D,E](f: (B,C,D) => E)(g: A => B,
+      									h: A => C,
+      									i: A => D): A => E = n => f(g(n), h(n), i(n)) 
+  
+  /**
    * EXERCISE 7
    * Implementing an abstract higher-order function that performs currying and another
    * that performs uncurrying
