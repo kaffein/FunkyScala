@@ -53,8 +53,11 @@ object FunctionLiterals {
    * Writing a function to check divisibility using higher-order
    * functions
    */
-  // def lift[A](f: (Boolean, Boolean) => Boolean, g: Pred[A], h: Pred[A]): Pred[A] = n => f(g(n), h(n))
-  def lift[A,B,C,D](f: (B,C) => D)(g: A => B, h: A => C): A => D = n => f(g(n), h(n))
+  def lift[A](f: (Boolean, Boolean) => Boolean, g: Pred[A], h: Pred[A]): Pred[A] = n => f(g(n), h(n))
+  
+  object polymorphicLift {
+	  def lift[A,B,C,D](f: (B,C) => D)(g: A => B, h: A => C): A => D = n => f(g(n), h(n))
+  }
   
   /**
    * EXERCISE 10
@@ -62,7 +65,18 @@ object FunctionLiterals {
    */
   def lift3[A,B,C,D,E](f: (B,C,D) => E)(g: A => B,
       									h: A => C,
-      									i: A => D): A => E = n => f(g(n), h(n), i(n)) 
+      									i: A => D): A => E = n => f(g(n), h(n), i(n))
+      									
+  /**
+   * EXERCISE 11
+   * Writing a lift function that takes three arguments
+   * using lift[A,B,C,D]
+   */
+  object lift3UsingLift {
+     def lift3[A,B,C,D,E](f: (B,C,D) => E)(g: A => B,
+    		 							   h: A => C,
+    		 							   i: A => D): A => E = n => polymorphicLift.lift[A,C,D,E](f(g(n), _, _))(h, i)(n)
+  }
   
   /**
    * EXERCISE 7
