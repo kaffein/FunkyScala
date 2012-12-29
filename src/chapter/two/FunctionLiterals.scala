@@ -92,4 +92,32 @@ object FunctionLiterals {
    * Equivalent to : f compose g OR g andThen f
    */
   def compose[A,B,C](f: B => C, g: A => B): A => C = a => f(g(a))
+
+  /**
+   * EXERCISE 12
+   * Finding the nth fibonacci number using tail-recursion
+   */
+  def fib(n: Int): Int = {
+
+    def loop(n: Int, x: Int, y: Int):Int = if (n == 0) x else loop(n - 1, y, y + x)
+
+    loop(n, 0, 1)
+
+  }
+
+  /**
+   * EXERCISE 13
+   * Square root using Newton's method which consists in finding
+   * successively better approximations
+   */
+  def sqrt(n: Double): Double = {
+
+    def f(x: Double) = (x * x) - n
+
+    iterateWhile(2.0)(x => x - f(x) / (2 * x),
+      x => f(x).abs > 1e-14)
+
+  }
+
+  def iterateWhile[A](a: A)(f: A => A, p: Pred[A]): A = if (p(a)) iterateWhile(f(a))(f, p) else a
 }

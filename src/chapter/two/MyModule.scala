@@ -1,8 +1,5 @@
 package chapter.two
 
-import chapter.two.FunctionLiterals.absolute
-import chapter.two.FunctionLiterals.divisibleBy
-import chapter.two.FunctionLiterals.lessThan
 
 object MyModule {
 
@@ -14,13 +11,13 @@ object MyModule {
   }
 
   /** Program entry point */
-  def main(args: Array[String]): Unit = {
+  def main(args: Array[String]) {
     assert(formatAbs(-42).equalsIgnoreCase("The absolute value of -42 is 42."))
 
     /** Using the lessThan function from FunctionLiterals */
     import chapter.two.FunctionLiterals._
     val b = lessThan(10, 20)
-    assert(lessThan(10, 20) == true)
+    assert(b == true)
 
     /**
      * EXCERCISE 2
@@ -71,5 +68,25 @@ object MyModule {
     assert(divisibleByThreeOrFive(18) == true)
     assert(divisibleByThreeOrFive(25) == true)
     assert(divisibleByThreeOrFive(7) == false)
+
+    /**
+     * EXERCISE 12
+     * Using tail-recursion-powered fibonacci function
+     */
+    assert(fib(6) == 8)
+    assert(fib(9) == 34)
+    assert(fib(12) == 144)
+    assert(fib(17) == 1597)
+    assert(fib(20) == 6765)
+
+    /**
+     * EXERCISE 13
+     * Using tail-recursion-powered Newton's method to find square
+     * roots
+     */
+    assert(sqrt(4.0) == 2.0)
+    assert(sqrt(16.0) == 4.0)
+    assert(sqrt(81.0) == 9.0)
+    assert(sqrt(25.0) == 5.0)
   }
 }
