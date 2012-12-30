@@ -65,4 +65,14 @@ object List {
 
   }
 
+  /**
+   * EXERCISE 5
+   * Implementing setHead to replace the first element of a
+   * list
+   */
+  def setHead[A](l: List[A])(a: A) = l match {
+    case Cons(x, xs) => Cons(a, xs)
+    case Nil => Cons(a, Nil)
+  }
+
 }

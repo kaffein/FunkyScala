@@ -30,6 +30,7 @@ object Main {
      * Implementing tail function on List[+A] data structure
      */
     assert(List.tail(List(1, 2, 3, 4, 5)) == List(2, 3, 4, 5))
+    assert(List.tail(Nil) == Nil)
 
     /**
      * EXERCISE 3
@@ -44,6 +45,14 @@ object Main {
      */
     assert(List.dropWhile(List(1, 2, 3, 4, 5))(x => x < 4) == List(4, 5))
     assert(List.dropWhile(List(2, 4, 6, 8, 10, 11))(x => x % 2 == 0) == List(11))
+
+    /**
+     * EXERCISE 5
+     * Assertion for testing setHead which replaces the first
+     * element of a list
+     */
+    assert(List.setHead(List(2, 4, 6, 8, 10, 11))(3) == List(3, 4, 6, 8, 10, 11))
+    assert(List.setHead(Nil)(3) == List(3))
 
   }
 
