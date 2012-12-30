@@ -25,6 +25,25 @@ object Main {
 
     assert(res == 3)
 
+    /**
+     * EXERCISE 2
+     * Implementing tail function on List[+A] data structure
+     */
+    assert(List.tail(List(1, 2, 3, 4, 5)) == List(2, 3, 4, 5))
+
+    /**
+     * EXERCISE 3
+     * Implementing drop function using tail
+     */
+    assert(List.drop(List(1, 2, 3, 4, 5))(3) == List(4, 5))
+    assert(List.drop(List(1, 2, 3, 4, 5))(2) == List(3, 4, 5))
+
+    /**
+     * EXERCISE 4
+     * Implementing dropWhile on List[A] data structure
+     */
+    assert(List.dropWhile(List(1, 2, 3, 4, 5))(x => x < 4) == List(4, 5))
+    assert(List.dropWhile(List(2, 4, 6, 8, 10, 11))(x => x % 2 == 0) == List(11))
 
   }
 

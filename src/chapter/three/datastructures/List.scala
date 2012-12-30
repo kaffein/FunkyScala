@@ -27,4 +27,42 @@ object List {
     case Cons(x, xs) => x * product(xs)
   }
 
+  /**
+   * EXERCISE 2
+   * Implementing the tail function which removes the first element
+   * on the List data structure
+   */
+  def tail[A](ds: List[A]): List[A] = ds match {
+    case Cons(x, xs) => xs
+    case Nil => Nil
+  }
+
+  /**
+   * EXERCISE 3
+   * Generalize tail to the function drop which removes the first n
+   * elements of a list
+   */
+  def drop[A](l: List[A])(n: Int): List[A] = {
+
+    def loop(l: List[A], n: Int): List[A] = if (n == 0) l else loop(tail(l), n - 1)
+
+    loop(l, n)
+
+  }
+
+  /**
+   * EXERCISE 4
+   * Implementing dropWhile on List[A] data structure
+   */
+  def dropWhile[A](l: List[A])(f: A => Boolean): List[A] = {
+
+      def loop(l: List[A], f: A => Boolean): List[A] = l match {
+        case Cons(x, xs) => if (f(x)) loop(xs, f) else l
+        case Nil => l
+      }
+
+      loop(l, f)
+
+  }
+
 }
