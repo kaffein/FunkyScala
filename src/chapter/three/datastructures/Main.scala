@@ -54,6 +54,15 @@ object Main {
     assert(List.setHead(List(2, 4, 6, 8, 10, 11))(3) == List(3, 4, 6, 8, 10, 11))
     assert(List.setHead(Nil)(3) == List(3))
 
+    /**
+     * EXERCISE 6
+     * Assertion for testing init method which returns all but the last
+     * element of a list
+     */
+    assert(List.init(List(2, 4, 6, 8, 10, 11)) == List(2, 4, 6, 8, 10))
+    assert(List.init(List(2, 4, 6)) == List(2, 4))
+    // assert(List.init(Nil) == "init of empty list")
+
   }
 
 }
