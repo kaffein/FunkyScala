@@ -23,7 +23,7 @@ object List {
 
   def product(ds: List[Double]): Double = ds match {
     case Nil => 1.0
-    case Cons(0.0, _) => 0.0
+    // case Cons(0.0, _) => 0.0
     case Cons(x, xs) => x * product(xs)
   }
 
@@ -85,5 +85,22 @@ object List {
     case Cons(_, Nil) => Nil
     case Cons(h, t) => Cons(h, init(t))
   }
+
+  /**
+   * Recursion over lists and generalization over
+   * higher-order functions
+   */
+  def foldRight[A,B](l: List[A], z: B)(f: (A, B) => B): B = l match {
+    case Nil => z
+    case Cons(x, xs) => f(x, foldRight(x, z)(f))
+  }
+
+  def sum2(l: List[Int]) = foldRight(l, 0.0)(_ + _)
+  def product2(l: List[Double]) = foldRight(l, 1.0)(_ * _)
+
+  /**
+   * EXERCISE 10
+   * Compute the length of a list using foldRight
+   */
 
 }

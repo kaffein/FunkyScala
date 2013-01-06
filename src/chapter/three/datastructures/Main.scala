@@ -63,6 +63,13 @@ object Main {
     assert(List.init(List(2, 4, 6)) == List(2, 4))
     // assert(List.init(Nil) == "init of empty list")
 
+    /**
+     * EXERCISE 9
+     * See what happens when you pass Nil and Cons themselves to foldRight,
+     * like	this:	foldRight(List(1,2,3), Nil:List[Int])(Cons(_,_))
+     */
+    //List.foldRight(List(1,2,3), Nil:List[Int])(Cons(_,_))
+
   }
 
 }
