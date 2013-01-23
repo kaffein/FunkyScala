@@ -187,4 +187,11 @@ object List {
     case Cons(x, xs) => append(f(x), flatMap(xs)(f))
   }
 
+  /**
+   * EXERCISE 22
+   * Implementing filter using flatMap
+   *
+   */
+  def filter_[A](l: List[A])(f: A => Boolean): List[A] = flatMap(l)(a => if (f(a)) List(a) else Nil)
+
 }

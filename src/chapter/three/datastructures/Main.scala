@@ -133,6 +133,9 @@ object Main {
     assert(List.filter(List(2, 4, 6, 8, 9))(_ % 2 == 0) == List(2, 4, 6, 8))
     assert(List.filter(List(3, 6, 9))(_ % 3 == 0) == List(3, 6, 9))
 
+    assert(List.filter_(List(2, 4, 6, 8, 9))(_ % 2 == 0) == List(2, 4, 6, 8))
+    assert(List.filter_(List(3, 6, 9))(_ % 3 == 0) == List(3, 6, 9))
+
     /**
      * EXERCISE 21
      * Asserting flatMap results
