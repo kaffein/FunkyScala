@@ -92,7 +92,7 @@ object List {
    */
   def foldRight[A,B](l: List[A], z: B)(f: (A, B) => B): B = l match {
     case Nil => z
-    case Cons(x, xs) => f(x, foldRight(x, z)(f))
+    case Cons(x, xs) => f(x, foldRight(xs, z)(f))
   }
 
   def sum2(l: List[Int]) = foldRight(l, 0.0)(_ + _)
@@ -102,5 +102,89 @@ object List {
    * EXERCISE 10
    * Compute the length of a list using foldRight
    */
+  def length[A](l: List[A]): Int = foldRight(l, 0)((_, acc) => acc + 1)
+
+  /**
+   * EXERCISE 11
+   * Implementing foldLeft as another general list-recursion function
+   * that is tail-recursive (unlike foldRight)
+   */
+  def foldLeft[A,B](l: List[A], z: B)(f: (B, A) => B): B = l match {
+    case Nil => z
+    case Cons(h, t) => foldLeft(t, f(z, h))(f)
+  }
+
+  def foldRightViaFoldLeft[A,B](l: List[A], z: B)(f: (A,B) => B): B =
+    foldLeft(reverse(l), z)((b,a) => f(a,b))
+
+  def foldRightViaFoldLeft_1[A,B](l: List[A], z: B)(f: (A,B) => B): B =
+    foldLeft(l, (b:B) => b)((g,a) => b => g(f(a,b)))(z)
+
+  def foldLeftViaFoldRight[A,B](l: List[A], z: B)(f: (B,A) => B): B =
+    foldRight(l, (b:B) => b)((a,g) => b => g(f(b,a)))(z)
+
+  /**
+   * EXERCISE 12
+   * Implementing sum, product and length using foldLeft
+   */
+  def sum3(l: List[Int]): Int = foldLeft(l, 0)(_ + _)
+
+  def product3(l: List[Int]): Int = foldLeft(l, 1)(_ * _)
+
+  def length2[A](l: List[A]): Int = foldLeft(l, 0)((acc, _) => acc + 1)
+
+  /**
+   * EXERCISE 13
+   * Implementing reverse using fold
+   */
+  def reverse[A](l: List[A]): List[A] = foldLeft(l, List[A]())((x, xs) => Cons(xs, x))
+
+  /**
+   * EXERCISE 15
+   * Implementing append with foldRight
+   */
+  def append[A](l: List[A], r: List[A]): List[A] = foldRight(l, r)(Cons(_, _))
+
+  /**
+   * EXERCISE 17
+   * Implementing a function that transforms a list of integers by
+   * adding 1 to each element
+   */
+  def add1(l: List[Int]) = foldRight(l, Nil: List[Int])((h, t) => Cons(h + 1, t))
+
+  /**
+   * EXERCISE 18
+   * Implementing a function that transforms each value in a list of double into
+   * String
+   */
+  def double2String(l: List[Double]): List[String] = foldRight(l, Nil: List[String])((h, t) => Cons(h.toString, t))
+
+  /**
+   * EXERCISE 19
+   * Implementing a function that generalizes modifying each element in a list
+   * while maintaining the list structure
+   */
+  def map[A,B](l: List[A])(f: A => B): List[B] = foldRight(l, Nil: List[B])((h, t) => Cons(f(h), t))
+
+  /**
+   * EXERCISE 20
+   * Implementing a function that filters/removes elements from a list unless they
+   * satisfy a given predicate
+   */
+  def filter[A](l: List[A])(f: A => Boolean): List[A] = l match {
+    case Nil => l
+    case Cons(x, xs) => if (!f(x)) filter(xs)(f) else Cons(x, filter(xs)(f))
+  }
+
+  /**
+   * EXERCISE 21
+   * Implementing a flatmap function that works like a map except that the function
+   * given will return a list instead of a single result and that list should be
+   * inserted into the final resulting list
+   */
+  def flatMap[A,B](l: List[A])(f: A => List[B]): List[B] = l match {
+    case Nil => Nil
+    case Cons(x, xs) => append(f(x), flatMap(xs)(f))
+  }
 
 }
