@@ -50,5 +50,23 @@ object Tree {
     case Leaf(_) => Leaf(f(_))
   }
 
+  /**
+   * EXERCISE 30
+   * Implementing fold function for Tree
+   *
+   * Implementing size, maximum, depth and map via fold
+   */
+  def fold[A,B](t: Tree[A])(f: A => B)(g: (B,B) => B): B = l match {
+    case Branch(left, right) => g(fold(left)(f)(g), fold(right)(f)(g))
+    case Leaf(_) => f(_)
+  }
+
+  def size_[A](t: Tree[A]): Int = fold(t)(a => 1)(1 + _ + _)
+  def maximum_(t: Tree[Int]): Int = fold(t)(a => a)(_ max _)
+  def depth_[A](t: Tree[A]): Int = fold(t)(a => 0)(1 + (_ max _))
+  def map_[A, B](t: Tree[A])(f: A => B): Tree[B] = fold(t)(a => Leaf(f(a)): Tree[B])(Branch(_, _))
+
+
+
 
 }
