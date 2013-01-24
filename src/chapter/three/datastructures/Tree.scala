@@ -32,5 +32,14 @@ object Tree {
     case Leaf(n) => n
   }
 
+  /**
+   * EXERCISE 28
+   * Writing depth function for Tree
+   */
+  def depth[A](t: Tree[A]): Int = t match {
+    case Branch(left, right) => 1 + (depth(left) max depth(right))
+    case Leaf(_) => 0
+  }
+
 
 }
