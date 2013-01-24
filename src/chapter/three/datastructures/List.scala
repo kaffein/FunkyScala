@@ -194,4 +194,15 @@ object List {
    */
   def filter_[A](l: List[A])(f: A => Boolean): List[A] = flatMap(l)(a => if (f(a)) List(a) else Nil)
 
+  /**
+   * EXERCISE 24
+   * Implementing zip which allows pairing elements of
+   * two different lists
+   */
+  def zipWith[A,B,C](a: List[A], b: List[B])(f: (A, B) => C): List[C] = (a, b) match {
+    case (Nil, _) => Nil
+    case (_, Nil) => Nil
+    case (Cons(x, xs), Cons(y, ys)) => Cons(f(x, y), zipWith(xs, ys)(f))
+  }
+
 }

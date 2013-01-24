@@ -1,5 +1,6 @@
 package chapter.three.datastructures
 
+
 /**
  * Created with IntelliJ IDEA.
  * User: nasoloaina
@@ -142,6 +143,13 @@ object Main {
      */
     def mapper(x: Int) = List(x - 1, x, x + 1)
     assert(List.flatMap(List(2, 4))(mapper(_)) == List(1, 2, 3, 3, 4, 5))
+
+    /**
+     * EXERCISE 24
+     * Asserting zip results
+     */
+    assert(List.zipWith(List(3, 6, 9), List("three", "six", "nine"))((_, _)) == List((3, "three"), (6, "six"), (9, "nine")))
+    assert(List.zipWith(List(4, 5, 6), List(1, 2, 3))(_ + _) == List(5, 7, 9))
 
   }
 
