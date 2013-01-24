@@ -41,5 +41,14 @@ object Tree {
     case Leaf(_) => 0
   }
 
+  /**
+   * EXERCISE 29
+   * Writing map function for Tree
+   */
+  def map[A, B](t: Tree[A])(f: A => B): Tree[B] = t match {
+    case Branch(left, right) => Branch(map(left)(f), map(right)(f))
+    case Leaf(_) => Leaf(f(_))
+  }
+
 
 }
