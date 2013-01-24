@@ -23,5 +23,14 @@ object Tree {
     case Leaf(_) => 1
   }
 
+  /**
+   * EXERCISE 27
+   * Writing the max function for Tree
+   */
+  def maximum(t: Tree[Int]): Int = t match {
+    case Branch(left, right) => maximum(left) max maximum(right)
+    case Leaf(n) => n
+  }
+
 
 }
