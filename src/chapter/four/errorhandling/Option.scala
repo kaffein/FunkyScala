@@ -10,6 +10,10 @@ package chapter.four.errorhandling
 
 sealed trait Option[+A] {
 
+  /**
+   * EXERCISE 1
+   * Implementing trait Option function
+   */
   def map[B](f: A => B): Option[B] = this match {
     case None => None
     case Some(_) => Some(f(_))
@@ -24,7 +28,10 @@ sealed trait Option[+A] {
 
   def orElse[B >: A](ob: => Option[B]): Option[B] = this map (Some(_)) getOrElse None
 
-  def filter(f: A => Boolean): Option[A] = this map (Some(_)) getOrElse None
+  def filter(f: A => Boolean): Option[A] = this match {
+    case Some(a) if (f(a)) => this
+    case _ => None
+  }
 
 }
 
