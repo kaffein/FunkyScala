@@ -16,12 +16,12 @@ sealed trait Option[+A] {
    */
   def map[B](f: A => B): Option[B] = this match {
     case None => None
-    case Some(_) => Some(f(_))
+    case Some(b) => Some(f(b))
   }
 
   def getOrElse[B >: A](default: => B): B = this match {
     case None => default
-    case Some(_) => _
+    case Some(b) => b
   }
 
   def flatMap[B](f: A => Option[B]): Option[B] = map(f) getOrElse None
