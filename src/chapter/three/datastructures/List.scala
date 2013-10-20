@@ -1,5 +1,7 @@
 package chapter.three.datastructures
 
+import scala.annotation.tailrec
+
 /**
  * Created with IntelliJ IDEA.
  * User: nasoloaina
@@ -35,6 +37,28 @@ object List {
   def tail[A](ds: List[A]): List[A] = ds match {
     case Cons(x, xs) => xs
     case Nil => Nil
+  }
+
+  def findFirst(ds: Array[Double], key: Double): Int = {
+    @tailrec
+    def loop(n: Int): Int = {
+      if (n >= ds.length) -1
+      else if(ds(n) == key) n
+      else loop(n + 1)
+    }
+
+    loop(0)
+  }
+
+  def findFirst[A](ds: Array[A], key: A): Int = {
+    @tailrec
+    def loop(n: Int): Int = {
+      if(n >= ds.length) -1
+      else if(ds(n) == key) n
+      else loop(n + 1)
+    }
+
+    loop(0)
   }
 
   /**
