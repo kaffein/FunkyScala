@@ -1,5 +1,7 @@
 package chapter.two
 
+import scala.annotation.tailrec
+
 object FunctionLiterals {
 
   val max: (Int, Int) => Int = (a, b) => if (a > b) a else b
@@ -26,6 +28,19 @@ object FunctionLiterals {
    */
   def abs(n: Int): Int = if(n < 0) -n else n
   // def absolute(f: Int => Int): Int => Int = n => abs(f(n))
+
+  def isSorted[A](as: Array[A], gt : (A, A) => Boolean): Boolean = {
+
+    @tailrec
+    def loop(n: Int): Boolean = {
+      if(n == as.length) true
+      else if(gt(as(n), as(n - 1))) loop(n + 1)
+      else false
+    }
+
+    loop(1)
+
+  }
   
   /**
    * EXERCISE 3

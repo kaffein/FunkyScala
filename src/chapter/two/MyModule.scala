@@ -28,6 +28,12 @@ object MyModule {
     val absTwoTimes = absolute(twoTimes)
     assert(absTwoTimes(-3) == 6)
 
+    val sortedDoubleArray: Array[Double] = Array(0d, 5d, 6d, 7d, 10d)
+    assert(isSorted(sortedDoubleArray, (x: Double, y: Double) => x > y) == true)
+    val notSortedIntArray: Array[Int] = Array(4, 6, 8, 2)
+    assert(isSorted(notSortedIntArray, (x: Int, y: Int) => x > y) == false)
+
+
     /**
      * EXERCISE 4
      * Using divisbleBy to check whether a given number is divisible by
