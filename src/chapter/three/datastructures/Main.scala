@@ -34,8 +34,8 @@ object Main {
     assert(List.tail(Nil) == Nil)
     assert(List.findFirst(Array(2d, 7d, 6d, 10d, 6d, 0d), 7d) == 1)
     assert(List.findFirst(Array(2d, 7d, 6d, 10d, 6d, 0d), 6d) == 2)
-    assert(List.findFirst(Array('z', 'v', 'b', 'c'), 'b') == 2)
-    assert(List.findFirst(Array(3, 0, 3, 4, 5), 7) == -1)
+    assert(List.findFirst(Array('z', 'v', 'b', 'c'), ((x: Char) => x.equals('b'))) == 2)
+    assert(List.findFirst(Array(3, 0, 3, 4, 5), ((x: Int) => x == 4)) == 3)
 
     /**
      * EXERCISE 3

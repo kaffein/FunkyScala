@@ -50,11 +50,11 @@ object List {
     loop(0)
   }
 
-  def findFirst[A](ds: Array[A], key: A): Int = {
+  def findFirst[A](ds: Array[A], p: A => Boolean): Int = {
     @tailrec
     def loop(n: Int): Int = {
       if(n >= ds.length) -1
-      else if(ds(n) == key) n
+      else if(p(ds(n))) n
       else loop(n + 1)
     }
 
